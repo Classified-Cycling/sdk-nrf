@@ -20,6 +20,9 @@ manifest:
     # NCS repositories are hosted here.
     - name: ncs
       url-base: https://github.com/nrfconnect
+    # Classified Cycling Github organization
+    - name: cc
+      url-base: https://github.com/Classified-Cycling
     # Third-party repository sources:
     - name: zephyrproject
       url-base: https://github.com/zephyrproject-rtos
@@ -60,8 +63,9 @@ manifest:
     # https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/zephyr/introduction/index.html
     # https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/zephyr/guides/modules.html
     - name: zephyr
+      remote: cc
       repo-path: sdk-zephyr
-      revision: v3.4.99-ncs1-1
+      revision: v3.4.99-ncs1-msh-branch
       import:
         # In addition to the zephyr repository itself, NCS also
         # imports the contents of zephyr/west.yml at the above
