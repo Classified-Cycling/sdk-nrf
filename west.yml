@@ -248,8 +248,8 @@ manifest:
       remote: memfault
     - name: ant
       repo-path: sdk-ant
-      revision: fcfcd1bc801b0ad2ef08117c7a681514729a5c4b
-      remote: ant-nrfconnect
+      revision: v1.1.0
+      remote: cc
       groups:
         - ant
     - name: bsim
