@@ -48,7 +48,7 @@ manifest:
   defaults:
     remote: ncs
 
-  group-filter: [-homekit, -nrf-802154, -dragoon, -find-my, -ant, -babblesim, -sidewalk, -bsec]
+  group-filter: [-homekit, -nrf-802154, -dragoon, -find-my, +ant, -babblesim, -sidewalk, -bsec]
 
   # "projects" is a list of git repositories which make up the NCS
   # source code.
@@ -247,8 +247,8 @@ manifest:
       remote: memfault
     - name: ant
       repo-path: sdk-ant
-      revision: c0cb28b9ea43009f6611386656881352d5382c36
-      remote: ant-nrfconnect
+      revision: v1.1.0
+      remote: cc
       groups:
         - ant
     - name: bsim
