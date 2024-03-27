@@ -65,7 +65,7 @@ manifest:
     - name: zephyr
       remote: cc
       repo-path: sdk-zephyr
-      revision: v3.5.99-ncs1
+      revision: v3.5.99-ncs1-msh-branch
       import:
         # In addition to the zephyr repository itself, NCS also
         # imports the contents of zephyr/west.yml at the above
