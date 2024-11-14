@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2018 Nordic Semiconductor ASA
+# Copyright (c) 2024 Nordic Semiconductor ASA
 #
 # SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
 #
@@ -56,6 +56,8 @@ else()
 
   if(NOT EXISTS ${SIGNATURE_PRIVATE_KEY_FILE})
     message(FATAL_ERROR "Config points to non-existing PEM file '${SIGNATURE_PRIVATE_KEY_FILE}'")
+  else()
+    message("Secure Boot signature key file: ${SIGNATURE_PRIVATE_KEY_FILE}")
   endif()
 endif()
 

@@ -1,4 +1,4 @@
-# Copyright (c) 2020-2023 Nordic Semiconductor ASA
+# Copyright (c) 2020-2024 Nordic Semiconductor ASA
 # SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
 
 # This file includes extra build system logic that is enabled when
@@ -11,7 +11,16 @@
 # function to avoid polluting the top-level scope.
 
 function(ncs_secure_boot_mcuboot_sign application bin_files signed_targets prefix)
-  set(keyfile "${SB_CONFIG_BOOT_SIGNATURE_KEY_FILE}")
+  if("${SB_CONFIG_BOOT_SIGNATURE_KEY_FILE}" STREQUAL "")
+    set(keyfile "")
+  else()
+    if(IS_ABSOLUTE ${SB_CONFIG_BOOT_SIGNATURE_KEY_FILE})
+      set(keyfile ${SB_CONFIG_BOOT_SIGNATURE_KEY_FILE})
+    else()
+      # Resolve path relative to the application configuration directory.
+      set(keyfile ${APPLICATION_CONFIG_DIR}/${SB_CONFIG_BOOT_SIGNATURE_KEY_FILE})
+    endif()
+  endif()
 
   # Find imgtool. Even though west is installed, imgtool might not be.
   # The user may also have a custom manifest which doesn't include
