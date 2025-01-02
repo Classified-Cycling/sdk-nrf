@@ -27,8 +27,8 @@ static void log_ble_peer_event(const struct app_event_header *aeh)
 
 	__ASSERT_NO_MSG(event->state < PEER_STATE_COUNT);
 
-	APP_EVENT_MANAGER_LOG(aeh, "id=%p %s reason=%" PRIu8,
-			      event->id, state_name[event->state], event->reason);
+	APP_EVENT_MANAGER_LOG(aeh, "id=%p %s reason=0x%" PRIx8, event->id, state_name[event->state],
+			      event->reason);
 }
 
 static void profile_ble_peer_event(struct log_event_buf *buf,

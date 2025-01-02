@@ -197,6 +197,9 @@ static void connected(struct bt_conn *conn, uint8_t error)
 
 		if (!bond_find_data.peer_bonded &&
 		    (bond_find_data.bond_cnt >= CONFIG_CAF_BLE_STATE_MAX_LOCAL_ID_BONDS)) {
+			LOG_WRN("Limiting number of bonds on identity %" PRIu8 " to %" PRIu8
+				" bonds",
+				info.id, bond_find_data.bond_cnt);
 			goto disconnect;
 		}
 	}
@@ -231,7 +234,7 @@ static struct bt_gatt_exchange_params exchange_params;
 
 static void exchange_func(struct bt_conn *conn, uint8_t err, struct bt_gatt_exchange_params *params)
 {
-	LOG_INF("MTU exchange done");
+	LOG_INF("MTU exchange done (ATT_MTU=%u)", bt_gatt_get_mtu(conn));
 }
 
 static void security_changed(struct bt_conn *conn, bt_security_t level, enum bt_security_err bt_err)
@@ -265,7 +268,7 @@ static void security_changed(struct bt_conn *conn, bt_security_t level, enum bt_
 		exchange_params.func = exchange_func;
 		err = bt_gatt_exchange_mtu(conn, &exchange_params);
 		if (err) {
-			LOG_ERR("MTU exchange failed");
+			LOG_ERR("MTU exchange failed (%d)", err);
 		}
 	}
 }
