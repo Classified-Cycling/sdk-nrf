@@ -65,10 +65,13 @@ static int set_color_one_channel(struct led *led, struct led_color *color)
 	/* For a single color LED convert color to brightness. */
 	unsigned int brightness = 0;
 
-	for (size_t i = 0; i < color->channel_count; i++) {
-		brightness += color->c[i];
+	if (color->channel_count) {
+		for (size_t i = 0; i < color->channel_count; i++) {
+			brightness += color->c[i];
+		}
+
+		brightness /= color->channel_count;
 	}
-	brightness /= color->channel_count;
 
 	return led_set_brightness(led->dev, 0, brightness);
 }
@@ -101,7 +104,7 @@ static void set_color(struct led *led, struct led_color *color)
 
 static void set_off(struct led *led)
 {
-	struct led_color nocolor = {0};
+	struct led_color nocolor = LED_NOCOLOR();
 
 	set_color(led, &nocolor);
 }
