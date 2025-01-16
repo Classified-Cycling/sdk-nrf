@@ -6,7 +6,7 @@
 
 menuconfig BT_MDS
 	bool "Memfault Diagnostic service"
-	depends on !MEMFAULT_HTTP_ENABLE
+	depends on !MEMFAULT_HTTP_ENABLE && MEMFAULT
 	select BT_NRF_SERVICES
 	help
 	 Enable GATT Memfault Diagnostic BLE service.
