@@ -55,7 +55,7 @@ config MCUMGR_GRP_OS_MCUMGR_PARAMS
 
 endif # MCUMGR_TRANSPORT_BT_REASSEMBLY
 
-if (SETTINGS_FCB || SETTINGS_NVS)
+if (SETTINGS_FCB || SETTINGS_NVS || SETTINGS_ZMS)
 
 # Enable support for the storage erase operation only when the storage
 # partition is created by the Partition Manager.
@@ -66,7 +66,7 @@ config MCUMGR_GRP_ZBASIC
 config MCUMGR_GRP_ZBASIC_STORAGE_ERASE
 	default y
 
-endif # (SETTINGS_FCB || SETTINGS_NVS)
+endif # (SETTINGS_FCB || SETTINGS_NVS || SETTINGS_ZMS)
 
 if NORDIC_QSPI_NOR
 
